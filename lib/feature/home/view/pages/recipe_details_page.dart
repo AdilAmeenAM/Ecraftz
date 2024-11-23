@@ -4,6 +4,7 @@ import 'package:recipe_management_app/feature/home/view/custom_clipper/custom_cl
 import 'package:recipe_management_app/feature/home/view/widgets/circle_button_widget.dart';
 import 'package:recipe_management_app/feature/home/view/widgets/ingredient_list_widget.dart';
 import 'package:recipe_management_app/feature/home/view/widgets/show_dialog_widget.dart';
+import 'package:recipe_management_app/feature/home/view/widgets/show_table_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
 class RecipeDetailsPage extends StatelessWidget {
@@ -83,7 +84,9 @@ class RecipeDetailsPage extends StatelessWidget {
                       CircleButtonWidget(
                         icon: Icons.table_chart_outlined,
                         label: 'unit chart',
-                        onPressed: () {},
+                        onPressed: () {
+                          ShowTableWidget.showTable(context);
+                        },
                       ),
                     ],
                   ),
