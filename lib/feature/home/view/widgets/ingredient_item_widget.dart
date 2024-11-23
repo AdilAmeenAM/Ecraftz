@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class IngredientItemWidget extends StatelessWidget {
   final String quantity, measure, food, imageUrl;
@@ -13,6 +14,7 @@ class IngredientItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    var myBox = Hive.box('shopping');
     return Container(
       margin: EdgeInsets.symmetric(
           vertical: height * .01, horizontal: width * .033),
@@ -51,10 +53,38 @@ class IngredientItemWidget extends StatelessWidget {
                 letterSpacing: 1),
           ),
           SizedBox(width: width * .033),
-          Icon(
-            Icons.add_circle_outline_rounded,
-            size: width * .07,
-            color: Colors.red,
+          ValueListenableBuilder(
+            valueListenable: myBox.listenable(),
+            builder: (context, value, child) {
+              bool exist = value.containsKey(food);
+              if (exist) {
+                return IconButton(
+                  onPressed: () {
+                    myBox.delete(food);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('item deleted')));
+                  },
+                  icon: Icon(
+                    Icons.done,
+                    color: Colors.green,
+                    size: width * .07,
+                  ),
+                );
+              }
+              return IconButton(
+                onPressed: () {
+                  String value = '$food $measure $quantity';
+                  myBox.put(food, value);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('item added succesfully')));
+                },
+                icon: Icon(
+                  Icons.add_circle_outline_rounded,
+                  size: width * .07,
+                  color: Colors.red,
+                ),
+              );
+            },
           )
         ],
       ),

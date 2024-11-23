@@ -3,6 +3,7 @@ import 'package:recipe_management_app/feature/home/model/recipe_model.dart';
 import 'package:recipe_management_app/feature/home/view/custom_clipper/custom_clip_path.dart';
 import 'package:recipe_management_app/feature/home/view/widgets/circle_button_widget.dart';
 import 'package:recipe_management_app/feature/home/view/widgets/ingredient_list_widget.dart';
+import 'package:recipe_management_app/feature/home/view/widgets/show_dialog_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
 class RecipeDetailsPage extends StatelessWidget {
@@ -75,7 +76,9 @@ class RecipeDetailsPage extends StatelessWidget {
                       CircleButtonWidget(
                         icon: Icons.monitor_heart_outlined,
                         label: 'Calories',
-                        onPressed: () {},
+                        onPressed: () {
+                          ShowDialogWidget.showCalories(recipe, context);
+                        },
                       ),
                       CircleButtonWidget(
                         icon: Icons.table_chart_outlined,
