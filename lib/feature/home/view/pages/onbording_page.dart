@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recipe_management_app/feature/home/view/pages/navigation_page.dart';
+import 'package:recipe_management_app/feature/authentication/view/pages/login_page.dart';
 
 class OnbordingPage extends StatelessWidget {
   static const routePath = "/onbording";
@@ -62,7 +62,7 @@ class OnbordingPage extends StatelessWidget {
                         width: width * .8,
                         child: ElevatedButton(
                             onPressed: () {
-                              context.go(NavigationPage.routePath);
+                              context.go(LoginPage.routePath);
                             },
                             child: const Text(
                               'Get Started',

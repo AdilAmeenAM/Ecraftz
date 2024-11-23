@@ -68,7 +68,7 @@ class RecipeDetailsPage extends StatelessWidget {
                         label: 'share',
                         onPressed: () {
                           Share.share('Hey there, Checkout my recipe...\n'
-                              'http://www.edamam.com/ontologies/edamam.owl#recipe_3f40351ef85b4323b4c9bf654355cafe');
+                              '${recipe.uri}');
                         },
                       ),
                       ValueListenableBuilder(

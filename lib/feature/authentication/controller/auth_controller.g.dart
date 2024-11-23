@@ -1,27 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe_service_controller.dart';
+part of 'auth_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeServiceControllerHash() =>
-    r'4bc44ae26d305534874d78360dd71136bf4c36f3';
+String _$authControllerHash() => r'5a403789a59e531deb22b076b9efef6699613f45';
 
-/// See also [RecipeServiceController].
-@ProviderFor(RecipeServiceController)
-final recipeServiceControllerProvider =
-    AutoDisposeNotifierProvider<RecipeServiceController, String?>.internal(
-  RecipeServiceController.new,
-  name: r'recipeServiceControllerProvider',
+/// See also [AuthController].
+@ProviderFor(AuthController)
+final authControllerProvider = NotifierProvider<AuthController, void>.internal(
+  AuthController.new,
+  name: r'authControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$recipeServiceControllerHash,
+      : _$authControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$RecipeServiceController = AutoDisposeNotifier<String?>;
+typedef _$AuthController = Notifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
