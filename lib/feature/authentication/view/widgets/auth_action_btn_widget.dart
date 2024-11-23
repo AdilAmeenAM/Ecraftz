@@ -18,12 +18,16 @@ class AuthActionBtnWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.secondary,
-            borderRadius: BorderRadius.circular(16)),
+            color: Colors.redAccent, borderRadius: BorderRadius.circular(16)),
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         child: Center(
-          child: isLoading ? const CircularProgressIndicator() : Text(text),
+          child: isLoading
+              ? const CircularProgressIndicator()
+              : Text(
+                  text,
+                  style: const TextStyle(color: Colors.white),
+                ),
         ),
       ),
     );

@@ -24,13 +24,13 @@ class AllRecipePage extends ConsumerWidget {
             .read(recipeServiceControllerProvider.notifier)
             .getRecipes(recipe, 0, 20),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: Text('no data'),
-            );
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
+            );
+          } else if (!snapshot.hasData) {
+            return const Center(
+              child: Text('no data'),
             );
           }
           return Padding(

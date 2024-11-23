@@ -25,7 +25,7 @@ class OnbordingPage extends StatelessWidget {
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(
-                              "assets/images/orbording_page_image.jpg"))),
+                              "assets/images/onbording_page_image.jpg"))),
                 )),
             Positioned(
               bottom: 0,

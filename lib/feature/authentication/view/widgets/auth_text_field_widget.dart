@@ -19,6 +19,7 @@ class AuthTextFieldWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
+        style: const TextStyle(color: Colors.white),
         controller: controller,
         validator: validator,
         obscureText: obscureText,
@@ -31,10 +32,10 @@ class AuthTextFieldWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               borderSide:
                   BorderSide(color: Theme.of(context).colorScheme.primary)),
-          fillColor: Theme.of(context).colorScheme.secondary,
+          fillColor: Colors.grey,
           filled: true,
           hintText: hintText,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.white),
         ),
       ),
     );
