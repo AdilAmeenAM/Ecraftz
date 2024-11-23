@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:recipe_management_app/feature/home/view/pages/home_page.dart';
 import 'package:recipe_management_app/feature/home/view/pages/recipe_category_page.dart';
+import 'package:recipe_management_app/feature/home/view/pages/saved_page.dart';
 import 'package:recipe_management_app/feature/home/view/pages/search_page.dart';
 import 'package:recipe_management_app/feature/home/view/pages/shopping_page.dart';
 import 'package:recipe_management_app/feature/home/view/widgets/bottom_navbar_widget.dart';
@@ -40,9 +41,7 @@ class NavigationPage extends HookWidget {
           HomePage(),
           RecipeCategoryPage(),
           SearchPage(),
-          Center(
-            child: Text('Page 4'),
-          ),
+          SavedPage(),
           ShoppingPage()
         ],
       ),

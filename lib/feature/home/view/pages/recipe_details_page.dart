@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:recipe_management_app/feature/home/model/recipe_model.dart';
 import 'package:recipe_management_app/feature/home/view/custom_clipper/custom_clip_path.dart';
 import 'package:recipe_management_app/feature/home/view/widgets/circle_button_widget.dart';
@@ -14,6 +15,7 @@ class RecipeDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dataBox = Hive.box('saved');
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -69,10 +71,38 @@ class RecipeDetailsPage extends StatelessWidget {
                               'http://www.edamam.com/ontologies/edamam.owl#recipe_3f40351ef85b4323b4c9bf654355cafe');
                         },
                       ),
-                      CircleButtonWidget(
-                        icon: Icons.bookmark_border,
-                        label: 'save',
-                        onPressed: () {},
+                      ValueListenableBuilder(
+                        valueListenable: dataBox.listenable(),
+                        builder: (context, value, _) {
+                          String key = recipe.label!;
+                          bool saved = dataBox.containsKey(key);
+                          if (saved) {
+                            return CircleButtonWidget(
+                              icon: Icons.bookmark,
+                              label: 'saved',
+                              onPressed: () {
+                                dataBox.delete(key);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        duration: Duration(seconds: 1),
+                                        content: Text('Recipe Deleted')));
+                              },
+                            );
+                          } else {
+                            return CircleButtonWidget(
+                              icon: Icons.bookmark_border,
+                              label: 'save',
+                              onPressed: () {
+                                dataBox.put(key, key);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        duration: Duration(seconds: 1),
+                                        content:
+                                            Text('Recipe added Succesfully')));
+                              },
+                            );
+                          }
+                        },
                       ),
                       CircleButtonWidget(
                         icon: Icons.monitor_heart_outlined,
